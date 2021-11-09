@@ -68,18 +68,18 @@ public class SudokuChecker {
 
 			// Korrekte Spielfelder pruefen
 			this.print();
-			System.out.println("Falscher Alarm?");
+			// System.out.println("Falscher Alarm?");
 			this.validiereSpielfeld();
 
 			// Fehler einbauen
 			this.spielFeld[8][8] = -1;
 			this.print();
-			System.out.println("Falscher Wert auf [8][8] ...");
+			// System.out.println("Falscher Wert auf [8][8] ...");
 			this.validiereSpielfeld();
 
 			this.spielFeld[8][8] = 8;
 			this.print();
-			System.out.println("Womoeglich doppelter Wert auf [8][8] ...");
+			// System.out.println("Womoeglich doppelter Wert auf [8][8] ...");
 			this.validiereSpielfeld();
 		}
 	}
@@ -91,7 +91,9 @@ public class SudokuChecker {
 	 * @return true, falls Wert in Ordnung
 	 */
 	private boolean isValueOk(int wert) {
-		return true; // TODO
+		// todo gemacht
+		return (wert >= 1 && wert <= ROW_SIZE);
+
 	}
 
 	/**
@@ -103,7 +105,12 @@ public class SudokuChecker {
 	 * @return true, falls Wert noch nicht vorhanden.
 	 */
 	private boolean isZeileOk(int zeile, int wert) {
-		// TODO
+		for (int iSpalte = 0; iSpalte < ROW_SIZE; iSpalte++) {
+			if (spielFeld[zeile][iSpalte] == wert) {
+				System.out.println("testtest");
+				return false;
+			}
+		}
 		return true;
 	}
 
@@ -115,8 +122,14 @@ public class SudokuChecker {
 	 * @return true, falls Wert noch nicht vorhanden.
 	 */
 	private boolean isSpalteOk(int spalte, int wert) {
-		// TODO
+		for (int iZeile = 0; iZeile < ROW_SIZE; iZeile++) {
+			if (spielFeld[iZeile][spalte] == wert) {
+
+				return false;
+			}
+		}
 		return true;
+
 	}
 
 	/**
@@ -128,7 +141,41 @@ public class SudokuChecker {
 	 * @return true, falls Wert noch nicht vorhanden.
 	 */
 	private boolean isBlockOk(int zeile, int spalte, int wert) {
-		// TODO
+		int[] toTest = new int[9];
+		int StartIndexX = 0;
+		int EndIndexX = 0;
+		int EndIndexY = 0;
+		int StartIndexY = 0;
+		if(zeile>=0 && zeile<=2) {
+			StartIndexY = 0;
+			EndIndexY = 2;
+			}
+		if(zeile>=3 && zeile<=5) {
+			StartIndexY = 3;
+			EndIndexY = 5;
+			}
+		if(zeile>=6 && zeile<=8) {
+			StartIndexY = 6;
+			EndIndexY = 9;
+			}
+		if(spalte>=0 && spalte<=2) {
+			StartIndexX = 0;
+			EndIndexX = 2;
+			}
+		if(spalte>=3 && spalte<=5) {
+			StartIndexX = 3;
+			EndIndexX = 5;
+			}
+		if(spalte>=6 && spalte<=8) {
+			StartIndexX = 6;
+			EndIndexX = 9;
+			}
+		for(int i = StartIndexX;i < EndIndexX;i++) {
+			for(int r = StartIndexY;r < EndIndexY;r++) {
+				System.out.println( (spielFeld[r][i]));
+				
+			}
+		}
 		return true;
 	}
 
@@ -174,7 +221,7 @@ public class SudokuChecker {
 	 */
 	public void print() {
 		final String horizBorder = "-------------------------";
-								
+
 		System.out.println();
 
 		for (int iZeile = 0; iZeile < ROW_SIZE; iZeile++) {
