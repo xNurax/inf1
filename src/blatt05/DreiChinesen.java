@@ -53,7 +53,6 @@ public class DreiChinesen {
 		// replace Vowels with replacement
 		String replacedLetters = text.replaceAll("[AaEeIiOoUu]", replacement);
 		return replacedLetters;
-
 	}
 
 	public static void main(String[] args) {
