@@ -6,14 +6,14 @@ public class DreiChinesen {
 
 	// Methode um mit StringBuilder links an strings whitespace hinzuzufügen.
 	public static String padLeftWhitespace(String inputString, int length) {
-		if (inputString.length() >= length) {//Exception covern
+		if (inputString.length() >= length) {// Exception covern
 			return inputString;
 		}
-		StringBuilder sb = new StringBuilder(); //eingebauten String builder benutzen
+		StringBuilder sb = new StringBuilder(); // eingebauten String builder benutzen
 		while (sb.length() < (length - inputString.length()) / 2) {
-			sb.append(' ');//so lange Maximallänge nicht errreicht ist leerzeichen einfügen 
+			sb.append(' ');// so lange Maximallänge nicht errreicht ist leerzeichen einfügen
 		}
-		sb.append(inputString); //vor eingegebenen String leerzeichen anfügen
+		sb.append(inputString); // vor eingegebenen String leerzeichen anfügen
 
 		return sb.toString();// eingegebeen String zurückgeben
 	}
@@ -58,14 +58,12 @@ public class DreiChinesen {
 
 	public static void main(String[] args) {
 		DreiChinesen.printCentered(text);
-		System.out.println("*****************************************************************************************");
-		DreiChinesen.printCentered(DreiChinesen.changeVowels(text, "i"));
-		System.out.println("*****************************************************************************************");
-		DreiChinesen.printCentered(DreiChinesen.changeVowels(text, "Ä"));
-		System.out.println("*****************************************************************************************");
-		DreiChinesen.printCentered(DreiChinesen.changeVowels(text, "o"));
-		System.out.println("*****************************************************************************************");
-		DreiChinesen.printCentered(DreiChinesen.changeVowels(text, "3"));
+		String[] outputArgs = { "i", "Ä", "o", "3" };
+		for (int i = 0; i < outputArgs.length; i++) {
+			System.out.println(
+					"*****************************************************************************************");
+			DreiChinesen.printCentered(DreiChinesen.changeVowels(text, outputArgs[i]));
+		}
 
 	}
 
