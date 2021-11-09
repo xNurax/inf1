@@ -27,9 +27,9 @@ public class Raum {
 	
 	/** Einen Raum am Bildschirm ausgeben */
 	public void print() {
-		System.out.print("KÃ¼rzel: " + this.getKuerzel() );
-		System.out.print(", PlÃ¤tze: " + this.getAnzahlPlaetze() );
-		System.out.print(", PlÃ¤tze bei Klausur: " + this.getAnzahlPlaetzeBeiKlausur() );
+		System.out.print("Kürzel: " + this.getKuerzel() );
+		System.out.print(", Plätze: " + this.getAnzahlPlaetze() );
+		System.out.print(", Plätze bei Klausur: " + this.getAnzahlPlaetzeBeiKlausur() );
 		if (this.hatAudio) {
 			System.out.print(", mit Audio");	
 		}
@@ -41,10 +41,14 @@ public class Raum {
 	/** Anzahl der PlÃ¤tze setzen */
 	public void setAnzahlPlaetze(int plaetze) {
 		final int MINIMUM = 1;
+		final int MAXIMUM = 500;
 		if(plaetze < MINIMUM) {
-			System.err.println("Die Anzahl der PlÃ¤tze muss grÃ¶ÃŸer als " + 
+			System.err.println("Die Anzahl der Plätze muss größer als " + 
 					(MINIMUM - 1) + " sein." );
-		} // TODO PrÃ¼fung gegen Maximum 
+		}else if(plaetze > MAXIMUM) {
+			System.err.println("Die Anzahl der Plätze dar nicht größer als "+MAXIMUM+"sein!" );
+			
+		}
 		else {
 			this.anzahlPlaetze = plaetze;
 		}
@@ -64,10 +68,10 @@ public class Raum {
 	public void setKuerzel(String kuerzel) {
 		final int MINIMALE_ANZAHL_ZEICHEN = 2;
 		if(null == kuerzel) {
-			System.err.println("Das KÃ¼rzel darf nicht null sein!" );
+			System.err.println("Das Kürzel darf nicht null sein!" );
 		}
 		else if (kuerzel.length() < MINIMALE_ANZAHL_ZEICHEN) {
-			System.err.println("Das KÃ¼rzel muss mindestens " + MINIMALE_ANZAHL_ZEICHEN + " Zeichen haben!" );
+			System.err.println("Das Kürzel muss mindestens " + MINIMALE_ANZAHL_ZEICHEN + " Zeichen haben!" );
 		}
 		else {
 			this.kuerzel = kuerzel;
