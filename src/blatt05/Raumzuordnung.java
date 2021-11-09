@@ -4,7 +4,7 @@ package blatt05;
 public class Raumzuordnung {
 	private Raum raum; // Referenz auf Raum
 	private Person nutzer; // Referenz auf Nutzer/in
-	
+	private String grund;
 	
 	
 	// TODO Grund für Zuordnung (z.B. "Büroraum", "Labor") als Zeichenkette
