@@ -6,7 +6,7 @@ public class ArrayStatistik {
 
 	static int[] werte = { 35, 7, 90, 26, 92, 54, 24, 65, 2, 67, 43, 26, 80, 92, 7, 40, 67, 66, 31, 45, 7, 100, 96, 93,
 			12, 20, 57, 22, 62, 51 };
-	static int[] tests = { -3, -2, -1 };
+	static int[] tests = { 1 };
 	static int summe;
 	static int anzahl;
 	static int max = -2000000000;
@@ -24,32 +24,40 @@ public class ArrayStatistik {
 	}
 
 	public static void mittelwert(int[] werte) {
+		if (werte.length == 1) {
+			System.out.println("Arithmetic middle is " + werte[0]);
+		} else {
 
-		for (int i = 0; i < werte[i]; i++) {
-			summe += werte[i];
-			anzahl = i;
+			for (int i = 0; i < werte[i]; i++) {
+				summe += werte[i];
+				anzahl = i;
+			}
+			System.out.println("Arithmetic middle is " + summe / (anzahl - 1));
+
 		}
-		System.out.println("Arithmetic middle is " + summe / (anzahl - 1));
-
 	}
 
 	public static void minmax(int[] werte) {
-		for (int i = 0; i < werte.length; i++) {
-			if (werte[i] > max) {
-				max = werte[i];
+		if (werte.length == 1) {
+			System.out.println("Only one Item in Array...");
+		} else {
+			for (int i = 0; i < werte.length; i++) {
+				if (werte[i] > max) {
+					max = werte[i];
+
+				}
 
 			}
 
-		}
+			for (int r = 0; r < werte.length; r++) {
+				if (werte[r] < min) {
+					min = werte[r];
 
-		for (int r = 0; r < werte.length; r++) {
-			if (werte[r] < min) {
-				min = werte[r];
+				}
 
 			}
-
+			System.out.println(("Minimum is : " + min + ",	Maximum is: " + max));
 		}
-		System.out.println(("Minimum is : " + min + ",	Maximum is: " + max));
 	}
 
 	public static void median(int[] werte) {
