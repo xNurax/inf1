@@ -7,25 +7,22 @@ public class ArrayStatistik {
 	static int[] werte = { 35, 7, 90, 26, 92, 54, 24, 65, 2, 67, 43, 26, 80, 92, 7, 40, 67, 66, 31, 45, 7, 100, 96, 93,
 			12, 20, 57, 22, 62, 51 };
 	static int[] tests = { 1 };
-	static double[][] Schaden = 
-		{	{0,74.4},
-			{350,18.2},
-			{1500,6.1},
-			{5000,1.3}
-		};
-	
+	static double[][] Schaden = { { 0, 74.4 }, { 350, 18.2 }, { 1500, 6.1 }, { 5000, 1.3 } };
+
 	static int summe;
 	static int anzahl;
 	static int max = -2000000000;
 	static int min = 2000000000;
 	static double median;
+
 	public static void print(double[][] array) {
-		for(int i = 0;i<array.length;i++) {
-			
-			System.out.println("Schaden in Euro : "+ array[i][0]+ "Wahrscheinlichkeit : "+array[i][1]+"%");
+		for (int i = 0; i < array.length; i++) {
+
+			System.out.println("Schaden in Euro : " + array[i][0] + "Wahrscheinlichkeit : " + array[i][1] + "%");
 		}
-		
+
 	}
+
 	public static void main(String[] args) {
 		mittelwert(werte);
 		minmax(werte);
@@ -60,16 +57,12 @@ public class ArrayStatistik {
 					max = werte[i];
 
 				}
-
-			}
-
-			for (int r = 0; r < werte.length; r++) {
-				if (werte[r] < min) {
-					min = werte[r];
+				if (werte[i] < min) {
+					min = werte[i];
 
 				}
-
 			}
+
 			System.out.println(("Minimum is : " + min + ",	Maximum is: " + max));
 		}
 	}
