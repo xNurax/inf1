@@ -6,13 +6,12 @@ public class Bauer {
 		Huhn Heidrun = new Huhn("Heidrun", true);
 		Huhn Heike = new Huhn("Heike", true);
 		Huhn Hannelore = new Huhn("Hannelore", true);
-		rufeHuhn(Heidrun);
-		fuettern(Heidrun);
-		rufeHuhn(Heike);
-		fuettern(Heike);
-		rufeHuhn(Hannelore);
-		fuettern(Hannelore);
-		System.out.println(Hannelore.getHungrig());
+		Walter.rufeHuhn(Heidrun);
+		Walter.fuettern(Heidrun);
+		Walter.rufeHuhn(Heike);
+		Walter.fuettern(Heike);
+		Walter.rufeHuhn(Hannelore);
+		Walter.fuettern(Hannelore);
 		System.out.println(berechneAnzahlHungrigerHuehner());
 
 	}
@@ -24,7 +23,7 @@ public class Bauer {
 		this.name = name;
 	}
 
-	public static void fuettern(Huhn currentHuhn) {
+	public void fuettern(Huhn currentHuhn) {
 		if(currentHuhn.getHungrig() == true) {
 			currentHuhn.setHungrig();
 			anzahlGefuetterterHuehner++;
@@ -33,7 +32,7 @@ public class Bauer {
 		}
 	}
 
-	public static void rufeHuhn(Huhn currentHuhn) {
+	public void rufeHuhn(Huhn currentHuhn) {
 		System.out.println(currentHuhn.getName());
 	}
 

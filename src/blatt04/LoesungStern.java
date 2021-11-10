@@ -59,12 +59,15 @@ public class LoesungStern extends JFrame {
 			if (i % 2 != 0) {
 				x = (int) (r2 * cosPhi);
 				y = (int) (r2 * sinPhi);
+				g.setColor(Color.MAGENTA);
+				g.drawLine(xM, yM, x + xM, y + yM);
+
 			} else {
 				x = (int) (r * cosPhi);
 				y = (int) (r * sinPhi);
+				g.setColor(Color.BLUE);
+				g.drawLine(xM, yM, x + xM, y + yM);
 			}
-			g.setColor(Color.MAGENTA);
-			g.drawLine(xM, yM, x + xM, y + yM);
 
 		}
 	}

@@ -26,7 +26,7 @@ public class Huhn {
 	}
 
 	public void setHungrig() {
-		this.hungrig = false;
+		this.hungrig = !hungrig;
 	}
 	
 	

@@ -15,7 +15,7 @@ public class Raumzuordnung {
 	/** Konstruktor */
 	public Raumzuordnung(Raum raum, Person nutzer, String grund) {
 		if (raum == null || nutzer == null || grund == null) {
-			System.out.println("Error, Person or raum cant be undefined!");
+			System.err.println("Error, Person or raum cant be undefined!");
 			return;
 		} else {
 			this.raum = raum;
