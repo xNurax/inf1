@@ -141,42 +141,16 @@ public class SudokuChecker {
 	 * @return true, falls Wert noch nicht vorhanden.
 	 */
 	private boolean isBlockOk(int zeile, int spalte, int wert) {
-		int[] toTest = new int[9];
-		int StartIndexX = 0;
-		int EndIndexX = 0;
-		int EndIndexY = 0;
-		int StartIndexY = 0;
-		if(zeile>=0 && zeile<=2) {
-			StartIndexY = 0;
-			EndIndexY = 2;
-			}
-		if(zeile>=3 && zeile<=5) {
-			StartIndexY = 3;
-			EndIndexY = 5;
-			}
-		if(zeile>=6 && zeile<=8) {
-			StartIndexY = 6;
-			EndIndexY = 9;
-			}
-		if(spalte>=0 && spalte<=2) {
-			StartIndexX = 0;
-			EndIndexX = 2;
-			}
-		if(spalte>=3 && spalte<=5) {
-			StartIndexX = 3;
-			EndIndexX = 5;
-			}
-		if(spalte>=6 && spalte<=8) {
-			StartIndexX = 6;
-			EndIndexX = 9;
-			}
-		for(int i = StartIndexX;i < EndIndexX;i++) {
-			for(int r = StartIndexY;r < EndIndexY;r++) {
-				System.out.println( (spielFeld[r][i]));
-				
-			}
+		int t = 3;
+		int IndexY = (zeile - 1) / t * t;
+		int IndexX = spalte/t*t;
+		int[] test;
+		for(int i = IndexY;i<IndexX;i++) {
+			
 		}
-		return true;
+		System.out.print(IndexX);
+	return true;
+
 	}
 
 	/**
