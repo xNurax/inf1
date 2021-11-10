@@ -146,7 +146,7 @@ public class SudokuChecker {
 		int IndexX = spalte/t*t;
 		int[] test;
 		for(int i = IndexY;i<IndexX;i++) {
-			
+			System.out.println(IndexX);
 		}
 		System.out.print(IndexX);
 	return true;
