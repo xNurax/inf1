@@ -1,7 +1,5 @@
 
 package blatt06;
-import java.util.Arrays;
-import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Pruefen eines 9x9 Sudokus
@@ -141,23 +139,19 @@ public class SudokuChecker {
 	 */
 	private boolean isBlockOk(int zeile, int spalte, int wert) {
 		int t = 3;
-		int IndexY = (zeile - 1) / t * t;
+		int IndexY = (zeile) / t * t;
 		int IndexX = (spalte / t * t);
-		int[] test = new int[9];
-		int i = 0;
+
 		for (int iZeile = IndexY; iZeile < IndexY + 3; iZeile++) {
 
 			for (int iSpalte = IndexX; iSpalte < IndexX + 3; iSpalte++) {
-
-				test[i] = spielFeld[iZeile][iSpalte];
-				i++;
-
+				if (spielFeld[iZeile][iSpalte] == wert) {
+					return false;
+				}
 			}
-		}
-		 boolean testt = ArrayUtils.contains(test, wert);
-	
 
-		// System.out.print(IndexX);
+		}
+
 		return true;
 
 	}
