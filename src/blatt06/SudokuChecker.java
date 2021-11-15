@@ -1,5 +1,7 @@
 
 package blatt06;
+import java.util.Arrays;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Pruefen eines 9x9 Sudokus
@@ -107,7 +109,6 @@ public class SudokuChecker {
 	private boolean isZeileOk(int zeile, int wert) {
 		for (int iSpalte = 0; iSpalte < ROW_SIZE; iSpalte++) {
 			if (spielFeld[zeile][iSpalte] == wert) {
-				System.out.println("testtest");
 				return false;
 			}
 		}
@@ -124,12 +125,10 @@ public class SudokuChecker {
 	private boolean isSpalteOk(int spalte, int wert) {
 		for (int iZeile = 0; iZeile < ROW_SIZE; iZeile++) {
 			if (spielFeld[iZeile][spalte] == wert) {
-
 				return false;
 			}
 		}
 		return true;
-
 	}
 
 	/**
@@ -143,13 +142,23 @@ public class SudokuChecker {
 	private boolean isBlockOk(int zeile, int spalte, int wert) {
 		int t = 3;
 		int IndexY = (zeile - 1) / t * t;
-		int IndexX = spalte/t*t;
-		int[] test;
-		for(int i = IndexY;i<IndexX;i++) {
-			System.out.println(IndexX);
+		int IndexX = (spalte / t * t);
+		int[] test = new int[9];
+		int i = 0;
+		for (int iZeile = IndexY; iZeile < IndexY + 3; iZeile++) {
+
+			for (int iSpalte = IndexX; iSpalte < IndexX + 3; iSpalte++) {
+
+				test[i] = spielFeld[iZeile][iSpalte];
+				i++;
+
+			}
 		}
-		System.out.print(IndexX);
-	return true;
+		 boolean testt = ArrayUtils.contains(test, wert);
+	
+
+		// System.out.print(IndexX);
+		return true;
 
 	}
 
