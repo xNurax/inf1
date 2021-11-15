@@ -13,8 +13,8 @@ public class Konto {
 		final int EINZAHLUNG = 1000;
 		int jahre = 0;
 		System.out.println("Geben sie ihr Startguthaben ein!");
-		
 		String userInput = reader.readLine();
+		
 		
 		guthaben = Integer.parseInt(userInput);
 		System.out.println("Ihr Startguthaben beträgt nun " + guthaben + "€!");
