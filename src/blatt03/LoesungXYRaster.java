@@ -8,36 +8,36 @@ import javax.swing.JFrame;
  */
 public class LoesungXYRaster extends JFrame {
 
-	/** Konstruktor. Nichts zu ändern hier */
+	/** Konstruktor. Nichts zu ï¿½ndern hier */
 	public LoesungXYRaster() {
 		super();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(604, 417);
-		this.setTitle("Lösung in der Klasse " + this.getClass().getName());
+		this.setTitle("Lï¿½sung in der Klasse " + this.getClass().getName());
 		this.setVisible(true);
 	}
 
-	/** Main-Methode. Nichts zu ändern hier. */
+	/** Main-Methode. Nichts zu ï¿½ndern hier. */
 	public static void main(String[] args) {
 		new LoesungXYRaster();
 	}
 
 	/**
-	 * Paint-Methode. Nichts zu ändern hier. Diese Methode wird beim Öffnen des
+	 * Paint-Methode. Nichts zu ï¿½ndern hier. Diese Methode wird beim ï¿½ffnen des
 	 * Fensters automatisch aufgerufen. Die Methode wird auch aufgerufen, wenn die
-	 * Größe des Fensters verändert wird.
+	 * Grï¿½ï¿½e des Fensters verï¿½ndert wird.
 	 * 
 	 * @param g Grafik, auf die gezeichnet wird.
 	 */
 	public void paint(Graphics g) {
-		/* Löschen des Fensterinhalts (wichtig bei erneutem Zeichnen): */
+		/* Lï¿½schen des Fensterinhalts (wichtig bei erneutem Zeichnen): */
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
 
 		this.meinRaster(g); // Aufruf der selbst programmierten Methode
 	}
 
 	/**
-	 * Hier bitte die Lösung, um das Raster zu zeichnen
+	 * Hier bitte die Lï¿½sung, um das Raster zu zeichnen
 	 * 
 	 */
 	public void meinRaster(Graphics g) {
@@ -45,12 +45,12 @@ public class LoesungXYRaster extends JFrame {
 		int x2 = this.getWidth() * 3 / 4;
 		int y1 = this.getHeight() / 4;
 		int y2 = this.getHeight() * 3 / 4;
-		int xLänge = this.getWidth() / 2;
-		int yLänge = this.getHeight() / 2;
+		int xLÃ¤nge = this.getWidth() / 2;
+		int yLÃ¤nge = this.getHeight() / 2;
 
 		for (int i = 0; i < 11; i++) {
-			int currentX = x1 + i * xLänge / 10;
-			int currentY = y1 + i * yLänge / 10;
+			int currentX = x1 + i * xLÃ¤nge / 10;
+			int currentY = y1 + i * yLÃ¤nge / 10;
 			
 			if (i % 2 != 0) {
 				g.setColor(Color.GRAY);

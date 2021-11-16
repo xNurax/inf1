@@ -17,7 +17,7 @@ public class TernarySalutation {
 	
 	/**
 	 * Grußformeln abhängig vom Bekanntheitsgrad und wahlweise mit oder ohne Signatur ausgeben
-	 * @return Gru�formeln
+	 * @return Gru�formeln
 	 * @param onFirstNameBase Per-Du?
 	 * @param signature Signatur anfügen?
 	 * @param given	Vorname
@@ -26,7 +26,10 @@ public class TernarySalutation {
 	 */
 	static String salutation(boolean onFirstNameBase, boolean signature, String given, String name, String signatureText)
 	{
-		return "tschüss!"; // TODO
+		String firstLine = onFirstNameBase ? given : (given +" "+ name);
+		String secondLine = signature ? ("______________________\n"+signatureText) : "";
+		return ("Viele Grüße,\n"+firstLine +"\n"+ secondLine);
+		
 
 	}
 	
