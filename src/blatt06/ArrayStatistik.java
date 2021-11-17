@@ -9,10 +9,8 @@ public class ArrayStatistik {
 	static int[] tests = { 1 };
 	static double[][] Schaden = { { 0, 74.4 }, { 350, 18.2 }, { 1500, 6.1 }, { 5000, 1.3 } };
 
-	static int summe;
 	static int anzahl;
-	static int max = -2000000000;
-	static int min = 2000000000;
+
 	static double median;
 
 	public static void print(double[][] array) {
@@ -25,6 +23,7 @@ public class ArrayStatistik {
 
 	public static void main(String[] args) {
 		mittelwert(werte);
+		mittelwert(werte);
 		minmax(werte);
 		median(werte);
 		System.out.println("*********************************************************************************");
@@ -35,36 +34,31 @@ public class ArrayStatistik {
 	}
 
 	public static void mittelwert(int[] werte) {
-		if (werte.length == 1) {
-			System.out.println("Arithmetic middle is " + werte[0]);
-		} else {
+		int summe = 0;
 
-			for (int i = 0; i < werte[i]; i++) {
-				summe += werte[i];
-				anzahl = i;
-			}
-			System.out.println("Arithmetic middle is " + summe / (anzahl - 1));
+		for (int i = 0; i < werte.length; i++) {
+			summe += werte[i];
 
 		}
+		System.out.println("Arithmetic middle is " + summe / (werte.length));
+
 	}
 
 	public static void minmax(int[] werte) {
-		if (werte.length == 1) {
-			System.out.println("Only one Item in Array...");
-		} else {
-			for (int i = 0; i < werte.length; i++) {
-				if (werte[i] > max) {
-					max = werte[i];
+		int max = Integer.MIN_VALUE;
+		int min = Integer.MAX_VALUE;
+		for (int i = 0; i < werte.length; i++) {
+			if (werte[i] > max) {
+				max = werte[i];
 
-				}
-				if (werte[i] < min) {
-					min = werte[i];
-
-				}
 			}
+			if (werte[i] < min) {
+				min = werte[i];
 
-			System.out.println(("Minimum is : " + min + ",	Maximum is: " + max));
+			}
 		}
+
+		System.out.println(("Minimum is : " + min + ",	Maximum is: " + max));
 	}
 
 	public static void median(int[] werte) {
@@ -74,7 +68,7 @@ public class ArrayStatistik {
 		if ((werte.length) % 2 == 0) {
 			median = (double) (werte[half] + werte[(half - 1)]) / 2;
 		} else {
-			median = werte[(int) (half + 0.5)];
+			median = werte[(half)];
 		}
 		System.out.println("Median is : " + median);
 	}

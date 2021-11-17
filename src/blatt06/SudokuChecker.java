@@ -139,8 +139,8 @@ public class SudokuChecker {
 	 */
 	private boolean isBlockOk(int zeile, int spalte, int wert) {
 		int t = 3;
-		int IndexY = (zeile) / t * t;
-		int IndexX = (spalte / t * t);
+		int IndexY = zeile / t * t;
+		int IndexX = spalte / t * t;
 
 		for (int iZeile = IndexY; iZeile < IndexY + 3; iZeile++) {
 
