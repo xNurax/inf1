@@ -16,11 +16,14 @@ public class SimplifyOrTransform {
 		a = b = c = 0;
 
 		a = (b = 1 + (c = 0));
+		
 		// Vereinfacht:
-		a=b=c+=1;
+		a=1;b=1;c=0;
+		
 		a = b++ - (b += 2) - (b = 0);
 		// Vereinfacht:
-		// TODO (Bitte durch Sie zu entwickeln)
+		a=-3;b=0;
+		
 
 		// Ändern Sie bitte ab auf, wo passend, Dekrement/Inkement-Opratoren
 		// oder kombinierte Zuweisungsoperatoren (jeweils ohne die Ausgabe zu ändern
@@ -87,12 +90,11 @@ public class SimplifyOrTransform {
 		}
 		System.out.println();
 		a = 3;
-		for (int i = a; i < 100; i += 2) {
-			
-			for (int b1 = 2; b1 * b1 < a && a % b1 != 0; b1++) {
-				if (b1 * b1 > a) {
-					System.out.println(a + ", ");
-				}
+		for ( a= 3; a < 100; a += 2) {
+			for (b = 2; b * b < a && a % b != 0; b++) {
+			}
+			if (b * b > a) {
+				System.out.print(a + ", ");
 			}
 
 		}
