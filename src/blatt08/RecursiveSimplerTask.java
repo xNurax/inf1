@@ -2,7 +2,8 @@ package blatt08;
 
 public class RecursiveSimplerTask {
 
-	public static void main(long n) {
+	public static void main(String[] args) {
+		long n= Long.parseLong(args[0]);
 		prt1234(n);
 	}
 
@@ -16,3 +17,4 @@ public class RecursiveSimplerTask {
 		}
 	}
 }
+ 
