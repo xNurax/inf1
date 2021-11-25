@@ -16,14 +16,15 @@ public class SimplifyOrTransform {
 		a = b = c = 0;
 
 		a = (b = 1 + (c = 0));
-		
+
 		// Vereinfacht:
-		a=1;b=1;c=0;
-		
+		a = b = 1;
+		c = 0;
+
 		a = b++ - (b += 2) - (b = 0);
 		// Vereinfacht:
-		a=-3;b=0;
-		
+		a = -3;
+		b = 0;
 
 		// Ändern Sie bitte ab auf, wo passend, Dekrement/Inkement-Opratoren
 		// oder kombinierte Zuweisungsoperatoren (jeweils ohne die Ausgabe zu ändern
@@ -68,13 +69,13 @@ public class SimplifyOrTransform {
 			a = a + 1;
 		}
 		System.out.println();
-		a = 1;
-		for (int i = a; i < NMAX; i++) {
-			b = 1;
-			for (int r = b; r < NMAX; r++) {
+		
+		for (a=1; a < NMAX; a++) {
+			for (b=1; b < NMAX; b++) {
 				System.out.printf("%3d", a * b);
-				b = b + 1;
+				
 			}
+			System.out.println();
 		}
 		System.out.println();
 		a = 3;
@@ -90,7 +91,7 @@ public class SimplifyOrTransform {
 		}
 		System.out.println();
 		a = 3;
-		for ( a= 3; a < 100; a += 2) {
+		for (a = 3; a < 100; a += 2) {
 			for (b = 2; b * b < a && a % b != 0; b++) {
 			}
 			if (b * b > a) {
@@ -109,6 +110,7 @@ public class SimplifyOrTransform {
 			break;
 		case 2:
 			seite = "zwei";
+			break;
 		case 3:
 			seite = "drei";
 			break;
@@ -120,6 +122,7 @@ public class SimplifyOrTransform {
 			break;
 		case 6:
 			seite = "sechs";
+			break;
 		default:
 			seite = "Ungültig";
 			break;
