@@ -38,6 +38,9 @@ public class BasisWandler {
 	 * @return Zeichenkette mit einzelnen Ziffern 0 ... 9, A, ..., Z
 	 */
 	String inBasisKwandeln(long n, int k)  {
+		if(k>10) {
+			
+		}
 		return "AFFE"; // TODO Rekursive Lösung für Basiswandel
 	}
 

@@ -13,6 +13,14 @@ public class MethodenUebung {
 		System.out.println(KleinsteZahl(7, 9, 3));
 		System.out.println(farbenWert(Kartenfarbe.KARO));
 		prt1234(9);
+		System.out.println();
+		prtSqr1234(9);
+		System.out.println();
+		prt2468(101);
+		System.out.println();
+		xxx(100);
+		System.out.println();
+		xxxx(100);
 
 	}
 
@@ -88,4 +96,37 @@ public class MethodenUebung {
 		}
 	}
 
+	static int b = 1;
+
+	static void prtSqr1234(long n) {
+		if (Math.pow(b, 2) <= Math.pow(n, 2)) {
+			System.out.print(b * b + ", ");
+			b++;
+			prtSqr1234(n);
+		}
+	}
+
+	static int c = 2;
+
+	static void prt2468(long n) {
+		if (c <= n) {
+			System.out.print(c + ", ");
+			c += 2;
+			prt2468(n);
+		}
+
+	}
+	static void xxx(long n) {
+		if(n > 0L) {
+		System.out.print(n+", ");
+		xxx(n-1);
+		}
+		else {}
+		}
+	static void xxxx(long n) {
+		while(n>0){
+			System.out.print(n+", ");
+			n--;
+		}
+	}
 }
