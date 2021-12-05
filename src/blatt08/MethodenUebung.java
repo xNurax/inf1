@@ -16,7 +16,7 @@ public class MethodenUebung {
 		System.out.println();
 		prtSqr1234(9);
 		System.out.println();
-		prt2468(101);
+		prt2468(7);
 		System.out.println();
 		xxx(100);
 		System.out.println();
@@ -68,54 +68,64 @@ public class MethodenUebung {
 	}
 
 	public static String farbenWert(Kartenfarbe farbe) {
-
+		String ret= "";
 		switch (farbe) {
 		case KARO:
-			return "9";
+			ret= "9";
+			break;
 
 		case HERZ:
-			return "10";
+			ret= "10";
+			break;
 
 		case PIK:
-			return "11";
+			ret= "11";
+			break;
 
 		default:
-			return "12";
+			ret= "12";
+			break;
 
 		}
+		return ret;
 
 	}
 
-	static int a = 1;
+	
 
 	static void prt1234(long n) {
-		if (a <= n) {
-			System.out.print(a + ",");
-			a++;
-			prt1234(n);
+		if (n > 0) {
+			prt1234(n-1);
+			System.out.print(n + ",");
 		}
 	}
 
 	static int b = 1;
 
 	static void prtSqr1234(long n) {
-		if (Math.pow(b, 2) <= Math.pow(n, 2)) {
-			System.out.print(b * b + ", ");
-			b++;
-			prtSqr1234(n);
+		if (n>0) {
+		    
+			prtSqr1234(n-1);
+		    System.out.print(Math.pow(n, 2)+ ", ");
+		   
+			
 		}
 	}
 
 	static int c = 2;
 
 	static void prt2468(long n) {
-		if (c <= n) {
-			System.out.print(c + ", ");
-			c += 2;
-			prt2468(n);
+		if (n>1) {
+		
+				prt2468(n-1);
+				if(n%2==0) {System.out.print(n);};
+		
+			}
+			
 		}
+		
 
-	}
+	
 	static void xxx(long n) {
 		if(n > 0L) {
 		System.out.print(n+", ");
