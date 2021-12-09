@@ -23,7 +23,7 @@ public class SudokuSolver {
 	 */
 	private final int ROW_SIZE = BLOCK_SIZE * BLOCK_SIZE;
 
-	private int nrOfSolutions, nrOfTests;
+	private int nrOfSolutions, nrOfTests,isSolvedAbuse;
 
 	/**
 	 * Zweidimensionales Array, welches das initiale (und das geloeste) Sudoku
@@ -40,19 +40,19 @@ public class SudokuSolver {
 	// Achtung: Arrays enthalten spaeter Loesung!
 	private int[][][] testSpielFelder = {
 			/* |---------|---------|---------| */
-			//{ { 5, 3, 0, 0, 7, 0, 0, 0, 0 }, { 6, 0, 0, 1, 9, 5, 0, 0, 0 }, { 0, 9, 8, 0, 0, 0, 0, 6, 0 },
-				//	/* |---------|---------|---------| */
-					//{ 8, 0, 0, 0, 6, 0, 0, 0, 3 }, { 4, 0, 0, 8, 0, 3, 0, 0, 1 }, { 7, 0, 0, 0, 2, 0, 0, 0, 6 },
+			{ { 5, 3, 0, 0, 7, 0, 0, 0, 0 }, { 6, 0, 0, 1, 9, 5, 0, 0, 0 }, { 0, 9, 8, 0, 0, 0, 0, 6, 0 },
 					/* |---------|---------|---------| */
-					//{ 0, 6, 0, 0, 0, 0, 2, 8, 0 }, { 0, 0, 0, 4, 1, 9, 0, 0, 5 }, { 0, 0, 0, 0, 8, 0, 0, 7, 9 } },
+					{ 8, 0, 0, 0, 6, 0, 0, 0, 3 }, { 4, 0, 0, 8, 0, 3, 0, 0, 1 }, { 7, 0, 0, 0, 2, 0, 0, 0, 6 },
+					/* |---------|---------|---------| */
+					{ 0, 6, 0, 0, 0, 0, 2, 8, 0 }, { 0, 0, 0, 4, 1, 9, 0, 0, 5 }, { 0, 0, 0, 0, 8, 0, 0, 7, 9 } },
 			/* |---------|---------|---------| */
 
 			/* |---------|---------|---------| */
-			//{ { 5, 3, 4, 6, 7, 8, 9, 1, 2 }, { 6, 7, 2, 1, 9, 5, 3, 4, 8 }, { 1, 9, 8, 3, 4, 2, 5, 6, 7 },
+			{ { 5, 3, 4, 6, 7, 8, 9, 1, 2 }, { 6, 7, 2, 1, 9, 5, 3, 4, 8 }, { 1, 9, 8, 3, 4, 2, 5, 6, 7 },
 					/* |---------|---------|---------| */
-			//		{ 8, 5, 9, 7, 6, 1, 4, 2, 3 }, { 4, 2, 6, 8, 5, 3, 7, 9, 1 }, { 7, 1, 3, 9, 2, 4, 8, 5, 6 },
+					{ 8, 5, 9, 7, 6, 1, 4, 2, 3 }, { 4, 2, 6, 8, 5, 3, 7, 9, 1 }, { 7, 1, 3, 9, 2, 4, 8, 5, 6 },
 					/* |---------|---------|---------| */
-			//		{ 9, 6, 1, 5, 3, 7, 2, 8, 4 }, { 2, 8, 7, 4, 1, 9, 6, 3, 5 }, { 3, 4, 5, 2, 8, 6, 1, 7, 0 } },
+					{ 9, 6, 1, 5, 3, 7, 2, 8, 4 }, { 2, 8, 7, 4, 1, 9, 6, 3, 5 }, { 3, 4, 5, 2, 8, 6, 1, 7, 0 } },
 			/* |---------|---------|---------| */
 
 			/* |---------|---------|---------| */
@@ -68,13 +68,13 @@ public class SudokuSolver {
 	public void testSudokuSolver() {
 		for (int[][] s : this.testSpielFelder) {
 			this.spielFeld = s;
-			
 			this.print();
 
 			nrOfSolutions = 0;
 			nrOfTests = 0;
 			this.loesen(0, 0);
-			System.out.println(nrOfTests);
+		System.out.println(nrOfTests);
+		System.out.println("Is Solved wird " + isSolvedAbuse+" mal abused!!!!");
 			this.print();
 		}
 	}
@@ -140,7 +140,7 @@ public class SudokuSolver {
 	 * Ein Sudoku ausgeben.
 	 */
 	public void print() {
-		final String horizBorder = " ┼────────┼────────┼────────┼";
+		final String horizBorder = "**********************";
 
 		System.out.println();
 
@@ -151,7 +151,7 @@ public class SudokuSolver {
 
 			for (int iSpalte = 0; iSpalte < ROW_SIZE; iSpalte++) {
 				if (0 == iSpalte % 3) {
-					System.out.print(" │ ");
+					System.out.print("*");
 				}
 
 				int wert = spielFeld[iZeile][iSpalte];
@@ -162,7 +162,7 @@ public class SudokuSolver {
 				}
 
 			}
-			System.out.println(" │");
+			System.out.println("*");
 		}
 		System.out.println(horizBorder);
 	}
@@ -179,57 +179,52 @@ public class SudokuSolver {
 	 * @param zeile  Startzeile der Suche
 	 * @param spalte Startspalte der Suche
 	 */
-	int i = 1;
-
 	public void loesen(int zeile, int spalte) {
-		nrOfTests += 1;
-		boolean test1 = false;
-		boolean test2 = false;
-		boolean test3 = false;
-		if (this.spielFeld[zeile][spalte] == 0 && i <= 9) {
+        // TODO: Sudoku mit Backtracking l�sen
+        if (spielFeld[zeile][spalte] == 0) {
+            //this cell is not solved yet, try to solve it
+            for (int trial = 1; trial <= 9; trial++) {
+                if (isWertOk(zeile, spalte, trial)) {
+                    spielFeld[zeile][spalte] = trial;
+                    if (spalte < 8 ) {
+                        loesen(zeile, spalte + 1);
+                    } else if (zeile < 8) {
+                        loesen(zeile + 1, 0);
+                    }
+                    if (is_solved(zeile)) {
+                        return;
+                    }
+                }
+            }
+            //reset changes
+            spielFeld[zeile][spalte] = 0;
+        } else {
+            //this cell is already solved, go to next one
+        	 if (spalte < 8 ) {
+                 loesen(zeile, spalte + 1);
+             } else if (zeile < 8) {
+                 loesen(zeile + 1, 0);
+             }
+        }
+    }
 
-			this.spielFeld[zeile][spalte] = i;
+    private boolean is_solved(int zeile) {
+    	isSolvedAbuse++;
+        for (; zeile < 9; zeile++) {
+            for (int spalte = 0; spalte < 9; spalte++) {
+                if (spielFeld[zeile][spalte] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
-			if (isBlockOk(zeile, spalte, i)==true) {
-				test1 = true;
-
-			}
-			if (isZeileOk(zeile, i)==true) {
-				test2 = true;
-
-			}
-			if (isSpalteOk(spalte, i)==true) {
-				test3 = true;
-
-			}
-			if (test1 && test2 && test3 == true) {
-				this.spielFeld[zeile][spalte]=i;
-				i=1;
-				return;
-			} else {
-				++i;
-				this.spielFeld[zeile][spalte]=0;
-				loesen(zeile, spalte);
-			}
-
-		} else {
-			if (spalte < 8) {
-				spalte += 1;
-				loesen(zeile, spalte);
-			} else {
-				if (zeile < 8) {
-
-					spalte = 0;
-					++zeile;
-					loesen(zeile, spalte);
-				}
-				return;
-			}
-
-		}
-
-	}
-
+  
+    private boolean isWertOk(int zeile, int spalte, int wert) {
+    	nrOfTests++;
+        return isZeileOk(zeile, wert) && isSpalteOk(spalte, wert) && isBlockOk(zeile, spalte, wert);
+    }
 	public static void main(String[] args) {
 		new SudokuSolver().testSudokuSolver();
 	}
