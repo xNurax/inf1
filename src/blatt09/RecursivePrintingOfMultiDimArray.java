@@ -38,19 +38,43 @@ public class RecursivePrintingOfMultiDimArray {
 	 *               Rekursionstiefe.
 	 */
 	static void printInXml(Object[] objs, String indent) {
-		String containerOpenTag = "<container>";
-		String containerClosingTag = "</container>";
+		String lastIndent;
 		
+		for (Object obj : objs) {
+			if (obj.getClass().isArray()) {
+				System.out.println(indent+"<container>");
+				lastIndent = indent;
+				printInXml((Object[]) obj,indent+="  ");
+				System.out.println(lastIndent+"</container>");
+				indent =lastIndent;
+				
+			} else {
+				
+				System.out.println(indent +"<string>"+ obj.toString().trim()+"</string>");
+				
+			}
+		}
 	}
 
 	public static void main(String[] args) {
-		printRecursively(eBau); // Gegebene Variante
+		//printRecursively(eBau); // Gegebene Variante
 		printInXml(eBau, ""); // Zu programmierende Variante
 		/*
-		 * Erwartete Ausgabe: <container> <container> <string>EU01</string>
-		 * <string>EU02</string> <string>EU03</string> <string>EU04</string>
-		 * </container> <container> <string>WC</string> <string>Putzraum</string>
-		 * <string>Dusche</string> </container> <container> <string>EU11</string>
+		 * Erwartete Ausgabe: 
+		 * <container> 
+		 * 		<container> 
+		 * 			<string>EU01</string>
+		 * 			<string>EU02</string> 
+		 * 			<string>EU03</string> 
+		 * 			<string>EU04</string>
+		 * 		</container> 
+		 * 		<container> 
+		 * 			<string>WC</string> 
+		 * 			<string>Putzraum</string>
+		 * 			<string>Dusche</string> 
+		 * 		</container> 
+		 * 		<container> 
+		 * 	<string>EU11</string>
 		 * <string>EU12</string> <string>EU13</string> <string>EU14</string>
 		 * </container> </container> <container> <container> <string>E001</string>
 		 * <string>E002</string> <string>E003</string> <string>E004</string>
