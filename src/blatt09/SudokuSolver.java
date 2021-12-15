@@ -23,7 +23,7 @@ public class SudokuSolver {
 	 */
 	private final int ROW_SIZE = BLOCK_SIZE * BLOCK_SIZE;
 
-	private int nrOfSolutions, nrOfTests, isFilledAbuse;
+	private int nrOfSolutions, nrOfTests, isFilledUse;
 
 	/**
 	 * Zweidimensionales Array, welches das initiale (und das geloeste) Sudoku
@@ -73,8 +73,8 @@ public class SudokuSolver {
 			nrOfSolutions = 0;
 			nrOfTests = 0;
 			this.loesen(0, 0);
-			System.out.println(nrOfTests);
-			System.out.println("Is Solved wird " + isFilledAbuse + " mal abused!!!!");
+			System.out.println("Es wurden "+nrOfTests+" Tests durchgefÃ¼hrt");
+			System.out.println("Is Filled wird " + isFilledUse + " mal genutzt!!!!");
 			this.print();
 		}
 	}
@@ -180,7 +180,6 @@ public class SudokuSolver {
 	 * @param spalte Startspalte der Suche
 	 */
 	public void loesen(int zeile, int spalte) {
-		// TODO: Sudoku mit Backtracking lösen
 		if (spielFeld[zeile][spalte] == 0) {
 			// this cell is not solved yet, try to solve it
 			for (int trial = 1; trial <= 9; trial++) {
@@ -209,7 +208,7 @@ public class SudokuSolver {
 	}
 
 	private boolean isFilled(int zeile) {
-		isFilledAbuse++;
+		isFilledUse++;
 		for (; zeile < 9; zeile++) {
 			for (int spalte = 0; spalte < 9; spalte++) {
 				if (spielFeld[zeile][spalte] == 0) {
