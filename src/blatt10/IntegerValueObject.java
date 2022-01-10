@@ -9,6 +9,7 @@ public class IntegerValueObject {
 
 	public int getI() {
 		return this.i;
+		//test
 	}
 
 	/**
