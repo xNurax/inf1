@@ -1,6 +1,6 @@
 package blatt10;
 
-public class SysTextFile {
+public class SysTextFile extends SysObjectBase{
 	String type;
 	String text;
 
@@ -8,16 +8,23 @@ public class SysTextFile {
 	 * Konstruktor type: String = Dateityp, z.B. ".txt", ".java", ".mp3" text:
 	 * String = Inhalt der Datei
 	 */
-	public SysTextFile(String type, String text) {
+	public SysTextFile(String name, String type) {
+		super(name);
 		this.type = type;
-		this.text = text;
+		
 	}
 
 	public String toString() {
-		return ("mimeType = " + this.type + ", Length = " + this.text.length() + " Characters, FileContent is :'\n"
-				+ this.text + "'");
+		return String.format("%s, mimeType = '%s', Length= '%d' ",
+				super.toString(), this.type, this.length() );
 	}
-
+	/**
+	 * Überschreiben von .length() um exceptions bei undefinierden Strings zu verhindern
+	 * @return
+	 */
+	public int length(){
+		return this.text == null ? 0 : this.text.length();
+}
 	public String getText() {
 		return text;
 	}
@@ -25,9 +32,5 @@ public class SysTextFile {
 	public void setText(String text) {
 		this.text = text;
 	}
-
-	public static void main(String[] args) {
-		SysTextFile test = new SysTextFile("Test", "Whatever");
-		System.out.println(test);
-	}
 }
+
