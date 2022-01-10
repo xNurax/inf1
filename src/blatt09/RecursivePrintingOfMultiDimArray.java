@@ -49,7 +49,6 @@ public class RecursivePrintingOfMultiDimArray {
 				indent =lastIndent;
 				
 			} else {
-				
 				System.out.println(indent +"<string>"+ obj.toString().trim()+"</string>");
 				
 			}
