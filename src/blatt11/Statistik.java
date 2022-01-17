@@ -24,9 +24,16 @@ public class Statistik {
 	 * @throws Exception 
 	 */
 	public Statistik(String name) throws Exception {
-		if(name == null|| name ==""||!Character.isLetter(name.charAt(0))) {
-			throw new Exception("ewewewewe");
+		if(name == null) {
+			throw new NullPointerException("Name cannot be null");
 		}
+		if(name =="") {
+			throw new RuntimeException("Name cannot be empty");
+		}
+		if(!Character.isLetter(name.charAt(0))){
+			throw new RuntimeException("Name must start with a letter");
+		}
+	
 		this.name = name;
 
 		
@@ -85,10 +92,11 @@ public class Statistik {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		TestStatistikAusnahmen d = new TestStatistikAusnahmen();
 		d.testDateiAusgabe();
 		d.testLeereStatistiken();
+		d.testNames();
 	}
 }

@@ -40,8 +40,9 @@ class TestStatistikAusnahmen {
 
 	/**
 	 * Testen, ob Dateiausgabe der Statistik funktioniert
+	 * @throws Exception 
 	 */
-	void testDateiAusgabe() {
+	void testDateiAusgabe() throws Exception {
 		this.printHeadline(1, "Test der Exception bei Dateiausgabe:");
 
 		this.printHeadline(2, "Test, ob Exception bei nicht gültigem Dateinamen (== Name der Statistik) kommt");
@@ -122,7 +123,7 @@ class TestStatistikAusnahmen {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		TestStatistikAusnahmen tests = new TestStatistikAusnahmen();
 		tests.testDateiAusgabe();
 		tests.testLeereStatistiken();
